@@ -1,0 +1,54 @@
+<!-- Page d'accueil -->
+    <slider>
+
+    </slider>
+    <div class="container">
+        <div class="flex">
+            <div class="corps-principal">
+                <section class="presentation">
+                    <h2>Sur l'association</h2>
+                    <p>
+                        Ce site est ouvert à tous les passionnés de planche à voile, paddle, dériveurs légers  et aux adeptes de la pratique de ce sport,même   occasionnel.
+                    </p>
+                    <p>
+                        Notre association dispose de deux plans d'eau situé sur une ancienne grévière en Picardie, dans l'Oise à 10 mn de Compiègne.
+                        Découvrez, au travers le site Planche Oise Passion, toutes les informations concernant notre association et communiquez avec ses membres    qui ne manqueront pas de vous fournir tous les renseignements nécessaires pour les différentes activités.
+                    </p>
+                    <a href="controllers/presentation.php">en savoir plus</a>
+                </section>
+                <section class="disciplines">
+                    <h2>Nos Disciplines</h2>
+                    <table>
+                        <tbody class='discipline'>
+                            <?php foreach($disciplines as $discipline): ?>
+                            <tr class="discipline-solo">
+                                <td><img src="<?=ASSETS_SITE ?>/images/disciplines/<?= $discipline['photo'] ?>" alt="<?= $discipline['name'] ?>" /></td>
+                                <td><h3><?= $discipline['name'] ?></h3></td>
+                                <td><?= $discipline['content'] ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+            <aside>
+                
+                <section class="news">
+                    <h2>News</h2>
+                        <ul>
+                            <?php foreach($news as $new): ?>
+                            <li>
+                                <h3><a href="<?= REQUEST_SITE ?>show_new.php?id=<?= $new['id'] ?>"><?= $new['title'] ?></a></h3>
+                                <p><?= $new['created_at'] ?></p>
+                                <p><?= substr($new['content'], 0, 100) ?></p>
+                            </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                </section>
+                <section class="partenaires">
+                    <h2>Partenaires</h2>
+                </section>
+            </aside>
+        </div>
+    </div>

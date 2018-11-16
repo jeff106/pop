@@ -1,0 +1,66 @@
+<!-- Page d'ahésion -->
+<div class="container">
+    <h1>Formulaire d'inscription</h1>
+        <form action="<?= REQUEST_SITE ?>/adhesion.php" method="POST">
+        <input type="hidden" name="validation" value="0">
+            <fieldset>
+                <legend>Informations personnelles</legend>
+                    <label for="gender">Civilité : </label>
+                    <select name="gender" id="gender"required="required" >
+                        <option name="gender" value="Homme">Homme</option>
+                        <option name="gender" value="Femme">Femme</option>
+                    </select>
+                    <label for="firstName">Prénom : </label>
+                    <input type="text" name="firstName" id="firstName" required="required" value="">
+                    <label for="lastName">Nom : </label>
+                    <input type="text" name="lastName" id="lastName" required="required" value="">
+                    <div >
+                        <label for="dateOfBirth">Date de Naissance : </label>
+                        <input type="text" name="dateOfBirth" id="datetimepicker" value="">
+                    </div>
+            </fieldset>
+            <fieldset>
+                    <legend>Adresse</legend>
+                    <label for="address">Adresse : </label>
+                    <input type="text" name="address" id="address" required="required" value="">
+                    <label for="zipCode">Code Postal : </label>
+                    <input type="text" name="zipCode" id="zipCode" required="required" value="">
+                    <label for="city">Ville : </label>
+                    <input type="text" name="city" id="city" required="required" value="">
+                    <label for="phone">Téléphone : </label>
+                    <input type="text" name="phone" id="phone" max-lenght="10" value="">
+            </fieldset>
+            <fieldset>
+                    <legend>Informations de connexion</legend>
+                    <label for="email">Email : </label>
+                    <input type="email" name="email" id="email" required="required" value="">
+                    <label for="password">Mot de passe : </label>
+                    <input type="password" name="password" id="password" required="required" value="">
+            </fieldset>
+            <fieldset>
+                    <legend>Informations complémentaires</legend>
+                    <label for="sport">Sport : </label>
+                    <input type="radio" name="sport" id="planche-a-voile" value="1">
+                    <label for="planche-a-voile">Planche à voile</label>
+                    <input type="radio" name="sport" id="paddle" value="2">
+                    <label for="paddle">Paddle</label>
+                    <input type="radio" name="sport" id="funboat" value="3">
+                    <label for="funboat">Funboat</label>
+            </fieldset>
+            <input type="submit" value="Soumettre">
+            <a class="button button-cancel" href="<?= PATH_SITE ?>">Annuler</a>
+        </form>
+    </h1>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" charset="utf-8"></script>
+
+<script type="text/javascript" >
+    jQuery.datetimepicker.setLocale('fr');
+    $('#datetimepicker').datetimepicker({
+        firstDayOfWeek: 1,
+		format:'d.m.Y',
+        lang:'fr',
+        timepicker:false,
+    });
+</script>

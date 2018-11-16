@@ -1,0 +1,35 @@
+<!-- Page d'une news détaillée -->
+<div class="container">
+    <section class="news">
+        <h1><?= $new['title'] ?></h1>
+        <p><?= $new['name'] ?></p>
+        <p><?= $new['created_at'] ?></p>
+        <article>
+            <img src="<?=ASSETS_SITE ?>/images/news/<?= $new['photo'] ?>" alt="<?= $new['title'] ?>">
+
+            <p><p><?= $new['content'] ?></p></p>
+            <a href="news.php">Retour</a>
+        </article>
+    </section>
+    <section class="comment">
+        <h2>Espace commentaire</h2>
+        <ul>
+            <?php foreach($comments as $comment): ?>
+            <li>
+                <p>posté par <?= $comment['name'] ?> le <?= $comment['created_at'] ?></p>
+                <h3>Commentaire</h3>
+                <p><?= $comment['content'] ?></p>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+    <section class="add-comment">
+        <h4>Laisser un commentaire</h4>
+        <form action="<?= REQUEST_SITE ?>add_comment.php" method="POST">
+            <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+            <textarea name="content" cols="100" rows="10"></textarea>
+            <button type="submit">Ajouter</button>
+        </form>
+    
+    </section>
+</div>

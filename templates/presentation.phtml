@@ -1,0 +1,61 @@
+<!-- Page de présentation -->
+<div class="container">
+    <section class="presentation">
+        <h1>présentation de l'assoc et de son fonctionnement</h1>
+        <p>
+        Planche Oise Passion est une association à but non lucratif (loi 1901) créée en 1995 par un groupe de véliplanchistes afin de pratiquer la planche à voile dans la région de Compiègne ( Picardie - Oise ).
+        <h2>Ses objectifs :</h2>
+            <ul>
+                <li>
+                    Promouvoir cette activité de loisir dans le département de l'Oise (Picardie),
+                </li>
+                <li>
+                    Initier et transmettre notre passion à tous ceux qui en ont envie, qu'ils soient pratiquants ou non de la planche à voile ou du funboard,
+                </li>
+                <li>
+                    Permettre de naviguer à tout moment de l'année.
+                </li>
+            </ul>
+        <h2>Les plans d'eau</h2>
+        <p>
+            L'association permet de pouvoir utiliser les plans d'eau en toute sécurité pour la pratique de la planche à voile mais aussi du paddle  (assurance,bateau de sécurité), et dispose de matériel pour les initiations.
+        </p>
+        <h3>Bois d'Ageux</h3>
+        <p>
+            Notre plan d'eau du Bois d'Ageux est très apprécié pour toutes activités nautiques: Funboard, Paddle board , voile légère. Nous disposons de matériel d'initiation et sommes à disposition de ceux qui voudraient venir nous rejoindre au sein de l'association Planche Oise  passion dans un esprit très convivial. Nous ne manquerons pas de vous fournir toutes les explications concernant les adhésions. Alors soyez les bienvenus(es).
+        </p>
+        <h3>Petit patis</h3>
+        <p>
+            Le 2ème plan d'eau dit  du Petit patis situé près de Rivecourt, est très apprécié de part son exposition pour les accros des bords à fond mais aussi du paddle ou autres manifestations.        
+        </p>
+    </section>
+    <section class="bureau">
+        <h2>Le Bureau</h2>
+        <?php foreach ($membres as $membre): ?>
+        <article>
+            <img src="<?=ASSETS_SITE ?>/images/bureau/<?= $membre['photo'] ?>" alt="<?= $membre['name'] ?>">
+            <p><?= $membre['function'] ?></p>
+            <p><?= $membre['name'] ?></p>
+            <p><?= $membre['address'] ?></p>
+            <p><?= $membre['phone'] ?></p>
+            <p><?= $membre['email'] ?></p>
+        </article>
+        <?php endforeach; ?>
+    </section>
+    <section class="infrastructure">
+        <figure>
+            <img src="<?=ASSETS_SITE ?>/images/plandeaux/bois-ageux.jpg" alt="Le Bois d'Ageux">
+            <figcaption>Le Bois d'Ageux</figcaption>
+            <p>
+                Notre plan d'eau de référence consacré aux initiations et manifestations mais aussi au paddle , voile légère  et planche à voile.
+            </p>
+        </figure>
+        <figure>
+            <img src="<?=ASSETS_SITE ?>/images/plandeaux/petit-patis.jpg" alt="Le Petit Patis">
+            <figcaption>Le Petit Patis</figcaption>
+            <p>
+                Depuis avril 2015, nous pouvons naviguer sur  2 plans d'eau. Pour vous rendre au Petit patis.
+            </p>
+        </figure>
+    </section>
+</div>

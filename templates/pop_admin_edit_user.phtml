@@ -1,0 +1,68 @@
+<h1>Gestion des utilisateurs</h1>
+<h2>Modification de l'utilisateur <?= $user['firstname'] . $user['lastname'] ?></h2>
+
+<form action="<?= REQUEST_SITE ?>/pop_admin_edit_user.php" method="POST">
+        <input type="hidden" name="validation" value="0">
+            <fieldset>
+                <legend>Informations personnelles</legend>
+                    <label for="gender">Civilité : </label>
+                    <select name="gender" id="gender"required="required" >
+                        <option name="gender" value="Homme">Homme</option>
+                        <option name="gender" value="Femme">Femme</option>
+                    </select>
+                    <label for="firstName">Prénom : </label>
+                    <input type="text" name="firstName" id="firstName" required="required" value="<?= $user['firstname'] ?>">
+                    <label for="lastName">Nom : </label>
+                    <input type="text" name="lastName" id="lastName" required="required" value="<?= $user['lastname'] ?>">
+                    <div >
+                        <label for="dateOfBirth">Date de Naissance : </label>
+                        <input type="text" name="dateOfBirth" id="datetimepicker" value="<?= $user['date_of_birth'] ?>">
+                    </div>
+            </fieldset>
+            <fieldset>
+                <legend>Adresse</legend>
+                    <label for="address">Adresse : </label>
+                    <input type="text" name="address" id="address" required="required" value="<?= $user['address'] ?>">
+                    <label for="zipCode">Code Postal : </label>
+                    <input type="text" name="zipCode" id="zipCode" required="required" value="<?= $user['zip_code'] ?>">
+                    <label for="city">Ville : </label>
+                    <input type="text" name="city" id="city" required="required" value="<?= $user['city'] ?>">
+                    <label for="phone">Téléphone : </label>
+                    <input type="text" name="phone" id="phone" max-lenght="10" value="<?= $user['phone'] ?>">
+            </fieldset>
+            <fieldset>
+                <legend>Informations de connexion</legend>
+                    <label for="email">Email : </label>
+                    <input type="email" name="email" id="email" required="required" value="<?= $user['email'] ?>">
+                    
+            </fieldset>
+            <fieldset>
+                <legend>Informations complémentaires</legend>
+                    <label for="sport">Sport : </label>
+                    <input type="radio" name="sport" id="planche-a-voile" value="1">
+                    <label for="planche-a-voile">Planche à voile</label>
+                    <input type="radio" name="sport" id="paddle" value="2">
+                    <label for="paddle">Paddle</label>
+                    <input type="radio" name="sport" id="funboat" value="3">
+                    <label for="funboat">Funboat</label>
+            </fieldset>
+            <fieldset>
+                <legend>Validation du compte utilisateur</legend>
+                    <label for="validation">Validé : </label>
+                    <input type="radio" name="validation" id="oui" value="1">
+                    <label for="oui">Oui</label>
+                    <input type="radio" name="validation" id="non" value="0">
+                    <label for="non">Non</label>
+            </fieldset>
+            <fieldset>
+                <legend>Staff</legend>
+                <label for="staff">L'utilisateur fait-il parti du staff : </label>
+                    <input type="radio" name="staff" id="oui" value="1">
+                    <label for="oui">Oui</label>
+                    <input type="radio" name="staff" id="non" value="0">
+                    <label for="non">Non</label>
+                    <label for="function">Fonction : </label>
+                    <input type="text" name="function" id="function" value="<?= $user['function'] ?>">
+            <input type="submit" value="Soumettre">
+            <a class="button button-cancel" href="<?= PATH_SITE ?>">Annuler</a>
+        </form>

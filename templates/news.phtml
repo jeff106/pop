@@ -1,0 +1,15 @@
+<!-- Page News -->
+<div class='container'>
+    <section class="news">
+        <?php foreach ($news as $new): ?>
+        <article>
+            <img src="<?=ASSETS_SITE ?>/images/news/<?= $new['photo'] ?>" alt="<?= $new['title'] ?>">
+            <p>Catégorie : <?= $new['name'] ?></p>
+            <p>rédigé le <?= $new['created_at'] ?></p>
+            <p><?= $new['title'] ?></p>
+            <p><?= $new['content'] ?></p>
+            <a href="<?= REQUEST_SITE ?>show_new.php?id=<?= $new['id'] ?>">Read More</a>
+        </article>
+        <?php endforeach; ?>
+    </section>
+</div>

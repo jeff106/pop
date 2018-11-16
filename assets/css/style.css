@@ -1,0 +1,51 @@
+header, footer {
+    border: 1px solid black;
+    background-color:white;
+    text-align:center;
+}
+.container {
+    width:80%;
+    margin:0 auto;
+}
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+.corps-principal {
+    width:70%;
+}
+aside {
+    width:30%;
+}
+header img {
+    width:100px;
+}
+header nav {
+    display: flex;
+    justify-content: space-around;
+    margin-left:300px;
+    padding:20px;
+}
+nav a {
+    background-color:rgb(50, 126, 240);
+    color:white;
+    padding:20px;
+    text-decoration:none;
+    font-family: 'Fira Sans', sans-serif;
+    
+}
+.disciplines {
+    width:100%;
+}
+.discipline {
+    display:flex;
+    justify-content: space-around;
+}
+.discipline-solo {
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start; 
+}
+td > img {
+    width:100px;
+}

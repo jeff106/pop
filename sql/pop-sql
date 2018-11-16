@@ -1,0 +1,188 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 11 juil. 2018 à 09:57
+-- Version du serveur :  5.7.21
+-- Version de PHP :  5.6.35
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `pop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(40) NOT NULL,
+  `lastname` varchar(40) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` tinyint(2) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `new`
+--
+
+DROP TABLE IF EXISTS `new`;
+CREATE TABLE IF NOT EXISTS `new` (
+  `id` tinyint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `admin_id` tinyint(2) UNSIGNED NOT NULL,
+  `category_id` tinyint(2) UNSIGNED NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `photo` varchar(30) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `admin_id` (`admin_id`),
+  KEY `category_id` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `new_comment`
+--
+
+DROP TABLE IF EXISTS `new_comment`;
+CREATE TABLE IF NOT EXISTS `new_comment` (
+  `id` tinyint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `new_id` tinyint(5) UNSIGNED NOT NULL,
+  `user_id` tinyint(3) UNSIGNED NOT NULL,
+  `content` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `new_id` (`new_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `topic`
+--
+
+DROP TABLE IF EXISTS `topic`;
+CREATE TABLE IF NOT EXISTS `topic` (
+  `id` tinyint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` tinyint(3) UNSIGNED NOT NULL,
+  `category_id` tinyint(2) UNSIGNED NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `category_id` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `topic_comment`
+--
+
+DROP TABLE IF EXISTS `topic_comment`;
+CREATE TABLE IF NOT EXISTS `topic_comment` (
+  `id` tinyint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `topic_id` tinyint(5) UNSIGNED NOT NULL,
+  `user_id` tinyint(3) UNSIGNED NOT NULL,
+  `content` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `topic_id` (`topic_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `date_of_birth` datetime NOT NULL,
+  `gender` varchar(5) NOT NULL,
+  `sport` varchar(30) NOT NULL,
+  `registration` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `zip_code` tinyint(5) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `validation` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `new`
+--
+ALTER TABLE `new`
+  ADD CONSTRAINT `new_admin_id` FOREIGN KEY (`admin_id`) REFERENCES `admin` (`id`),
+  ADD CONSTRAINT `new_category_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Contraintes pour la table `new_comment`
+--
+ALTER TABLE `new_comment`
+  ADD CONSTRAINT `new_comment_new_id` FOREIGN KEY (`new_id`) REFERENCES `new` (`id`),
+  ADD CONSTRAINT `new_comment_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `topic`
+--
+ALTER TABLE `topic`
+  ADD CONSTRAINT `topic_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
+  ADD CONSTRAINT `topic_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `topic_comment`
+--
+ALTER TABLE `topic_comment`
+  ADD CONSTRAINT `topic_comment_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`),
+  ADD CONSTRAINT `topic_comment_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Gestion du Site</h1>
+    <h2>Bienvenue <?= $_SESSION['admin']['firstName'] ?></h2>
+    <a href="<?=REQUEST_SITE?>/logout.php">Déconnexion</a>
+    <nav>
+        <a href="<?=REQUEST_SITE?>/pop_admin.php" >Gestion des utilisateurs</a>
+        <a href="<?=REQUEST_SITE?>/pop_admin_news.php" >Gestion des articles</a>
+        <a href="#" >Gestion des commentaires</a>
+    </nav>
+    <div class="content">
+        <table>
+            <thead>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Validation</th>
+                <th>Staff</th>
+                <th>Function</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <?php foreach($users as $user): ?>
+                <tr>
+                    <td><?= $user['firstname'] ?></td>
+                    <td><?= $user['lastname'] ?></td>
+                    <td><?= $user['address'] ?></td>
+                    <td><?= $user['zip_code'] ?></td>
+                    <td><?= $user['city'] ?></td>
+                    <td><?= $user['phone'] ?></td>
+                    <td><?= $user['email'] ?></td>
+                    <td><?= $user['validation'] ?></td>
+                    <td><?= $user['staff'] ?></td>
+                    <td><?= $user['function'] ?></td>
+                    <td><a href="<?=REQUEST_SITE?>/pop_admin_edit_user.php?id=<?=$user['id'] ?>">Modifier</a> | <a href="<?=REQUEST_SITE?>/pop_admin_delete_user.php?id=<?=$user['id'] ?>">Supprimer</a></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>    
+</div>

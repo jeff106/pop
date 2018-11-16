@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Site de l'association Planche Oise Passion</title>
+
+    <!-- Feuilles de styles externes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Jua|Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <!-- Css Calendar Date + Time - User Booking -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css">
+    <!-- Feuilles de styles de l'application -->
+    <link rel="stylesheet" href="<?=ASSETS_SITE ?>/css/style.css">
+    <!-- Librairie jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <img src="<?=ASSETS_SITE ?>/images/logo.png" alt="logo planche oise passion">
+                <div class="adhesion">
+                    <h2>Espace Adhérant</h2>
+                    <?php if(!isset($_SESSION['user']) || !isset($_SESSION['admin']) || empty($_SESSION)): ?>
+                    <form action="<?=REQUEST_SITE?>/login.php" method="POST">
+                        <fieldset>
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="password" placeholder="Mot de passe">
+                            <button>Connexion</button>
+                        </fieldset>
+                        <a href="controllers/adhesion.php">Adhésion en ligne</a>
+                    </form>
+                    <?php endif; ?>
+                    <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+                    <a href="<?=REQUEST_SITE?>/utilisateur.php">Gérer mon compte</a>
+                    <a href="<?=REQUEST_SITE?>/logout.php">Déconnexion</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <nav>
+                <a href="<?=PATH_SITE?>/index.php">Accueil</a>
+                <a href="<?=REQUEST_SITE?>/presentation.php">L'association</a>
+                <a href="<?=REQUEST_SITE?>/news.php">News</a>
+                <a href="<?=REQUEST_SITE?>/forum.php">Forum</a>
+                <a href="<?=REQUEST_SITE?>/contact.php">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- Chargement du template PHTML -->
+        <?php include 'templates/' . $template . '.phtml'?>
+    </main>
+    <footer>
+    
+    </footer>
+</body>
+</html>

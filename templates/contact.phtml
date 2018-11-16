@@ -1,0 +1,26 @@
+<!-- Page de contact -->
+<div class="container">
+    <section class="contact">
+        <h1>Nous Joindre</h1>
+        <?php foreach($contacts as $contact): ?>
+        <article class="contacts">
+        <img src="<?=ASSETS_SITE ?>/images/bureau/<?= $contact['photo'] ?>" alt="<?= $contact['name'] ?>">
+            <p><?= $contact['name'] ?></p>
+            <p><?= $contact['address'] ?></p>
+            <p>Téléphone : <?= $contact['phone'] ?> Mail : <?= $contact['email'] ?></p>
+        </article>
+        <?php endforeach; ?>
+    </section>
+    <section class="acces">
+        <h2>Acceder a nos infrastructures</h2>
+        <article>
+            <h3>Plan d'eau du Bois d'Ageux</h3>
+            <img src="" alt="Plan d'eau du Bois d'Ageux">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5200.777165726176!2d2.725458542852783!3d49.3258615618886!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e62d2afc2352d5%3A0x85422237821a585f!2sPlanche+Oise+Passion!5e0!3m2!1sfr!2sfr!4v1532090016119" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </article>
+        <article>
+        <h3>Plan d'eau du Petit Patis</h3>
+            <img src="" alt="Plan d'eau du Petit Patis">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2599.587019031305!2d2.7388562151072877!3d49.34103707933775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDIwJzI3LjciTiAywrA0NCcyNy44IkU!5e0!3m2!1sfr!2sfr!4v1532090809854" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </article>
+  </div>
